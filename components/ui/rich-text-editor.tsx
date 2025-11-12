@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import dynamic from 'next/dynamic';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import 'react-quill/dist/quill.snow.css';
@@ -18,8 +18,6 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
   placeholder = "Write your content here...",
   className = ""
 }) => {
-  const quillRef = useRef<any>(null);
-
   const modules = useMemo(() => ({
     toolbar: [
       [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
@@ -50,7 +48,6 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
   return (
     <div className={`rounded-md ${className}`}>
       <ReactQuill
-        ref={quillRef}
         theme="snow"
         value={value}
         onChange={onChange}
