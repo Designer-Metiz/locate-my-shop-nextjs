@@ -31,7 +31,7 @@ const mapStyles = [
     description:
       "The classic Google Maps look that most users are familiar with. Clear roads, green landscapes, and simple pin visibility. Best for businesses that value simplicity and familiarity—ideal for retail chains, grocery stores, or service centers.",
     previewImage: "/lovable-uploads/standard-map-style.png", // Standard Map Style - Shopify admin preview
-    demoImage: "/lovable-uploads/standerd-map-look.png", // Standard Map Look - Actual store locator page
+    demoImage: "/lovable-uploads/standard-map-look.png", // Standard Map Look - Actual store locator page
   },
   {
     name: "Silver",
