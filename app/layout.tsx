@@ -19,6 +19,11 @@ export const metadata: Metadata = {
       : process.env.VERCEL_URL
       ? new URL(`https://${process.env.VERCEL_URL}`)
       : new URL("http://localhost:3000"),
+  icons: {
+    icon: "/lovable-uploads/e38b2a7e-a356-4be7-a266-c52662189454.png",
+    apple: "/lovable-uploads/e38b2a7e-a356-4be7-a266-c52662189454.png",
+    shortcut: "/lovable-uploads/e38b2a7e-a356-4be7-a266-c52662189454.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
