@@ -13,6 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/blog',
     '/features',
     '/contact',
+    '/store-locator-examples',
   ].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date() }));
 
   const { data: posts } = await supabase

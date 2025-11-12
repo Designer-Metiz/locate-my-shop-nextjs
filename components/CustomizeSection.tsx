@@ -4,6 +4,7 @@ import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carouse
 import { ArrowRight, Settings, Palette, Code, Users } from "lucide-react";
 import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
+import Link from "next/link";
 
 // Import logos
 const murkaniLogo = "/assets/logos/murkani-logo.png";
@@ -94,10 +95,10 @@ const CustomizeSection = () => {
             {/* CTA Button */}
             <div className="pt-4">
               <Button className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium" asChild>
-                <a href="https://storelocator.in/store-locator-examples" target="_blank" rel="noopener noreferrer">
+                <Link href={"/store-locator-examples" as any}>
                   Browse store locator examples
                   <ArrowRight className="h-4 w-4" />
-                </a>
+                </Link>
               </Button>
             </div>
           </div>
