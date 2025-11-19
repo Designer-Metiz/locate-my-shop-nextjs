@@ -6,7 +6,7 @@ const Footer = () => {
   const footerLinks = {
     product: [
       { label: "Overview", href: "/" },
-      { label: "Features", href: "/features" },
+      { label: "Features", href: "/#features" },
       { label: "Pricing", href: "/#pricing" },
       { label: "Store Locator Examples", href: "/store-locator-examples" },
       { label: "Platforms", href: "#" },
@@ -45,7 +45,7 @@ const Footer = () => {
     ],
     resources: [
       { label: "Help & Support", href: "https://support.metizsoft.com/portal/en/kb/store-locator-by-metizsoft" },
-      { label: "FAQ", href: "/contact" },
+      { label: "FAQ", href: "/#faq" },
       { label: "Blog", href: "/blog" },
       { label: "Add a store locator to Squarespace", href: "#" },
       { label: "Add a store locator to Shopify", href: "#" },

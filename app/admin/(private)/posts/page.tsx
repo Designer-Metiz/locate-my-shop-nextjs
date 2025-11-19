@@ -78,34 +78,110 @@ export default function PostsPage() {
         input.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').trim();
       const slug = toSlug(formData.slug && formData.slug.trim().length > 0 ? formData.slug : formData.title);
 
+      // Parse schema - always process it for both new and existing posts
       let seoSchemaParsed: any = null;
-      if (formData.seo_schema && formData.seo_schema.trim().length > 0) {
+      const hasSchemaInput = formData.seo_schema && formData.seo_schema.trim().length > 0;
+      
+      if (hasSchemaInput) {
         try {
           seoSchemaParsed = JSON.parse(formData.seo_schema);
-        } catch {
+          // Validate that parsed result is an object or array
+          if (seoSchemaParsed !== null && typeof seoSchemaParsed !== 'object') {
+            setSaving(false);
+            return toast({ title: "Invalid SEO Schema", description: "Schema must be a valid JSON object or array.", variant: "destructive" });
+          }
+        } catch (parseError) {
           setSaving(false);
-          return toast({ title: "Invalid SEO Schema", description: "Please provide valid JSON-LD.", variant: "destructive" });
+          return toast({ title: "Invalid SEO Schema", description: "Please provide valid JSON-LD. " + (parseError instanceof Error ? parseError.message : ""), variant: "destructive" });
         }
       }
 
-      const postData = {
-        ...formData,
+      // Build post data (exclude user_id for updates)
+      const basePostData: any = {
+        title: formData.title,
+        excerpt: formData.excerpt,
+        content: formData.content,
         author_id: formData.author_id && formData.author_id.trim().length > 0 ? formData.author_id : null,
+        image_url: formData.image_url,
         slug,
-        user_id: user.id,
+        read_time: formData.read_time,
+        seo_title: formData.seo_title,
+        seo_description: formData.seo_description,
         published_at: new Date(formData.published_at).toISOString(),
         date_day: new Date(formData.published_at).getDate().toString(),
         date_month: new Date(formData.published_at).toLocaleDateString('en-US', { month: 'short' }),
         date_year: new Date(formData.published_at).getFullYear().toString(),
-        seo_schema: seoSchemaParsed,
       };
+
+      // Handle seo_schema for JSONB column
+      const postData: any = { ...basePostData };
+      if (hasSchemaInput && seoSchemaParsed !== null) { postData.seo_schema = seoSchemaParsed; }
+      else { postData.seo_schema = null; }
+
       let result;
+      let savedPost: any = null;
+
+      // Compute only changed fields for updates
+      const computeChangedFields = (): any => {
+        if (!editingPost) return postData;
+        const changed: any = {};
+        const fieldsToCompare: Array<keyof typeof postData> = [
+          "title","excerpt","content","author_id","image_url","slug","read_time",
+          "seo_title","seo_description","published_at","date_day","date_month","date_year"
+        ];
+        for (const key of fieldsToCompare) {
+          // @ts-ignore
+          const newVal = postData[key];
+          // @ts-ignore
+          const oldVal = (editingPost as any)[key];
+          const newStr = newVal instanceof Date ? newVal.toISOString() : String(newVal ?? "");
+          const oldStr = oldVal instanceof Date ? oldVal.toISOString() : String(oldVal ?? "");
+          if (newStr !== oldStr) {
+            // @ts-ignore
+            changed[key] = newVal;
+          }
+        }
+        // Handle schema comparison explicitly
+        const oldSchemaStr = editingPost.seo_schema ? JSON.stringify(editingPost.seo_schema) : null;
+        const newSchemaStr = postData.seo_schema ? JSON.stringify(postData.seo_schema) : null;
+        if (oldSchemaStr !== newSchemaStr) {
+          changed.seo_schema = postData.seo_schema;
+        }
+        return changed;
+      };
+      
       if (editingPost) {
-        result = await supabase.from('blog_posts').update(postData).eq('id', editingPost.id).select();
+        const changedData = computeChangedFields();
+        result = await supabase
+          .from('blog_posts')
+          .update(changedData)
+          .eq('id', editingPost.id)
+          .select('*');
+        
+        // If select returns empty but status is 200, fetch separately (RLS may block select)
+        if (!result.error && result.status === 200 && (!result.data || result.data.length === 0)) {
+          const { data: fetchedData } = await supabase
+            .from('blog_posts')
+            .select('*')
+            .eq('id', editingPost.id)
+            .maybeSingle();
+          if (fetchedData) savedPost = fetchedData;
+        } else if (result.data && result.data.length > 0) {
+          savedPost = result.data[0];
+        }
       } else {
-        result = await supabase.from('blog_posts').insert(postData).select();
+        const insertData = { ...postData, user_id: user.id };
+        result = await supabase.from('blog_posts').insert(insertData).select('*');
+        if (result.data && result.data.length > 0) {
+          savedPost = result.data[0];
+        }
       }
-      if ((result as any).error) throw (result as any).error;
+      
+      if (result.error) {
+        console.error('Database error:', result.error);
+        throw result.error;
+      }
+      
       toast({ title: "Success", description: `Post ${editingPost ? 'updated' : 'created'} successfully!` });
       setIsDialogOpen(false);
       setEditingPost(null);
@@ -132,6 +208,19 @@ export default function PostsPage() {
 
   const handleEdit = (post: BlogPost) => {
     setEditingPost(post);
+    
+    // Properly handle schema - can be object, array, or null
+    let schemaString = "";
+    if (post?.seo_schema) {
+      try {
+        // Ensure it's properly stringified regardless of whether it's an object or array
+        schemaString = JSON.stringify(post.seo_schema, null, 2);
+      } catch (e) {
+        console.error('Error stringifying schema:', e);
+        schemaString = "";
+      }
+    }
+    
     setFormData({
       title: post.title,
       excerpt: post.excerpt || "",
@@ -142,7 +231,7 @@ export default function PostsPage() {
       read_time: post.read_time || "",
       seo_title: post.seo_title || "",
       seo_description: post.seo_description || "",
-      seo_schema: post?.seo_schema ? JSON.stringify(post.seo_schema, null, 2) : "",
+      seo_schema: schemaString,
       published_at: post.published_at ? format(new Date(post.published_at), "yyyy-MM-dd'T'HH:mm") : format(new Date(), "yyyy-MM-dd'T'HH:mm"),
     });
     setIsDialogOpen(true);

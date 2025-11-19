@@ -10,7 +10,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
-import { supabase } from "@/lib/supabase/client";
 
 const contactFormSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -43,12 +42,25 @@ export default function ContactPage() {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.functions.invoke("send-contact-email", { body: data });
-      if (error) throw error;
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send message");
+      }
+
       toast.success("Message sent successfully! We'll get back to you soon.");
       form.reset();
-    } catch (err) {
-      toast.error("Failed to send message. Please try again.");
+    } catch (err: any) {
+      console.error("Error sending message:", err);
+      toast.error(err.message || "Failed to send message. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
