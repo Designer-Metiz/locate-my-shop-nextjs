@@ -119,7 +119,7 @@ const BlogDetailPage = ({ slug: slugProp }: Props) => {
                 <Card className="gradient-card border-0 shadow-card mb-8">
                   <CardContent className="p-8">
                     <div 
-                      className="prose prose-lg max-w-none prose-foreground prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-code:text-foreground prose-blockquote:text-muted-foreground prose-blockquote:border-primary/20"
+                      className="prose prose-lg max-w-none prose-foreground prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-code:text-foreground prose-blockquote:text-muted-foreground prose-blockquote:border-primary/20 prose-ul:text-muted-foreground prose-ol:text-muted-foreground prose-li:text-muted-foreground"
                       dangerouslySetInnerHTML={{ __html: currentPost.content }}
                     />
                   </CardContent>

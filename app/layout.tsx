@@ -1,4 +1,5 @@
 import "./globals.css";
+import "@/styles/quill.css";
 import type { Metadata } from "next";
 import { ReactQueryClientProvider } from "@/components/providers/ReactQueryClientProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";

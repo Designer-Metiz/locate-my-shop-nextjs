@@ -100,6 +100,56 @@
   @keyframes float { 0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)} }
   .animate-fade-in-up { animation: fade-in-up 0.6s ease-out; }
   @keyframes fade-in-up { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+  
+  /* Blog content list styling */
+  .prose ul,
+  .prose ol {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    padding-left: 1.625em;
+  }
+  
+  .prose ul {
+    list-style-type: disc;
+  }
+  
+  .prose ol {
+    list-style-type: decimal;
+  }
+  
+  .prose li {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding-left: 0.375em;
+    color: hsl(var(--muted-foreground));
+  }
+  
+  .prose ul > li,
+  .prose ol > li {
+    position: relative;
+  }
+  
+  .prose ul > li::marker {
+    color: hsl(var(--foreground));
+  }
+  
+  .prose ol > li::marker {
+    color: hsl(var(--foreground));
+    font-weight: 500;
+  }
+  
+  .prose li > p {
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+  }
+  
+  .prose li > *:first-child {
+    margin-top: 0;
+  }
+  
+  .prose li > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 
