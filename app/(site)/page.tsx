@@ -21,97 +21,89 @@ export default function Page() {
   const vercelUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined;
   const baseUrl = siteUrlFromEnv || vercelUrl || 'http://localhost:3000';
 
-  const webPageSchema = {
+  const homePageSchema = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Best Shopify Store Locator App - Find Stores Easily | Metizsoft",
-    "description": "Shopify store locator app with custom maps, bulk upload, and mobile design. Help customers find your stores fast with our store finder.",
-    "url": baseUrl
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "Is the app easy to install?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, the app is user-friendly and integrates seamlessly with Shopify. Installation takes just a few clicks from the Shopify App Store, and our setup wizard guides you through the entire process."
+        "@type": "WebSite",
+        "@id": `${baseUrl}/#website`,  // Use baseUrl instead of hardcoded
+        "url": baseUrl, 
+        "name": "StoreLocator.in",
+        "description": "StoreLocator.in helps businesses create powerful, accurate, and customizable store locator solutions with bulk upload, geo-location, filters, analytics, and easy website integration.",
+        "publisher": {
+          "@id": "https://www.storelocator.in/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.storelocator.in/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
         }
       },
       {
-        "@type": "Question",
-        "name": "How do I add multiple stores?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You can bulk upload store locations using a CSV file for quick setup, or add them individually through our intuitive interface."
-        }
+        "@type": "Organization",
+        "@id": "https://www.storelocator.in/#organization",
+        "name": "StoreLocator.in",
+        "url": "https://www.storelocator.in/",
+        "logo": "https://www.storelocator.in/wp-content/uploads/2024/05/storelocator-logo.png",
+        "sameAs": [
+          "https://www.facebook.com/",
+          "https://www.instagram.com/",
+          "https://www.linkedin.com/"
+        ]
       },
       {
-        "@type": "Question",
-        "name": "Is there a free trial available?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes! The app offers a free plan for up to 3 locations with no time limit. All paid plans also come with a 14-day free trial."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is the store locator mobile - friendly?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, the app is fully responsive and works perfectly across all devices — desktops, tablets, and smartphones. Customers can locate stores, get directions, and contact outlets directly from their phones."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need technical knowledge to set it up?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No technical expertise is required. The app is built for everyone — just install it, upload your store data, and embed it on your preferred page. Setup takes only a few minutes."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "can i customize the map design to my store theme?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. You can easily change map colors, pin icons, and layouts to align with your brand's Shopify theme. Every part of the locator can be personalized to match your design style."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I add a store locator for my website without coding?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, you can add a store locator for your website without writing any code. The Shopify Store Locator App provides a plug-and-play setup, allowing you to display your locations within minutes."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What's the difference between a store locator map and store locator software?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A store locator map focuses on showing your stores visually to customers, while store locator software includes management tools like analytics, bulk uploads, and customization."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does a store locator widget help improve user experience?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Adding a store locator widget helps customers find your outlets without leaving your website. It creates a quick, direct path from online search to in-store visit — saving time and reducing friction."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does having a store locator map improve local SEO?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Embedding a store locator map helps search engines recognize your physical locations. It increases the chances of appearing in \"near me\" searches and local results, driving more organic foot traffic."
-        }
+        "@type": "FAQPage",
+        "@id": "https://www.storelocator.in/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is StoreLocator.in?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "StoreLocator.in is a complete store locator solution that allows businesses to display their store locations on an interactive map with features like bulk upload, location analytics, filters, search, geo-location, and easy website integration."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who can use StoreLocator.in?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "StoreLocator.in can be used by any multi-location business such as retail brands, pharmacies, supermarkets, service centers, automobile dealers, clinics, and franchise chains that need to help customers find nearby store locations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does StoreLocator.in support bulk location uploads?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, StoreLocator.in allows bulk upload of store locations using CSV files, making it easy to manage large numbers of stores efficiently."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can the store locator be customized?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, StoreLocator.in offers customizable map styles, brand-based color themes, filters, and layout options to match your website's branding."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it support mobile-friendly store locators?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely. StoreLocator.in is fully responsive and optimized for mobile devices, ensuring customers can easily find stores on any screen size."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What analytics does StoreLocator.in provide?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The platform provides insights such as store views, search queries, popular locations, device usage, and user interaction patterns to help businesses optimize store visibility."
+            }
+          }
+        ]
       }
     ]
   };
@@ -123,13 +115,7 @@ export default function Page() {
         {/* @ts-ignore - JSON-LD schema script */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-        />
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        {/* @ts-ignore - JSON-LD schema script */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(homePageSchema) }}
         />
         <div className="my-[15px]">
           <HeroSection />
