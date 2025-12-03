@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -20,18 +20,29 @@ const BlogDetailPage = ({ slug: slugProp }: Props) => {
   const [searchTerm, setSearchTerm] = useState("");
   
   const { post: currentPost, loading, error } = useBlogPost(slug || "");
-  const { posts } = useBlogPosts();
+  const { posts, loading: postsLoading } = useBlogPosts();
   
-  const relatedPosts = posts
-    .filter(post => post.slug !== slug && post.category === currentPost?.category)
-    .slice(0, 3);
+  // Memoize related posts calculation to prevent unnecessary recalculations
+  const relatedPosts = useMemo(() => {
+    if (!currentPost || !posts.length) return [];
+    return posts
+      .filter(post => post.slug !== slug && post.category === currentPost?.category)
+      .slice(0, 3);
+  }, [posts, currentPost, slug]);
   
-  const filteredPosts = posts.filter(post =>
-    post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    post.category.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Memoize filtered posts for search
+  const filteredPosts = useMemo(() => {
+    if (!searchTerm || !posts.length) return [];
+    return posts.filter(post =>
+      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.category.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [posts, searchTerm]);
 
-  if (loading) { return (<main className="pt-20"><PageLoader message="Loading article..." /></main>); }
+  // Only show loading if we don't have cached data and are actually loading
+  if (loading && !currentPost) { 
+    return (<main className="pt-20"><PageLoader message="Loading article..." /></main>); 
+  }
 
   if (error || !currentPost) {
     return (
