@@ -11,30 +11,39 @@ const ScrollToHash = () => {
     // Use requestAnimationFrame to batch DOM reads and avoid forced reflow
     const scrollToHash = () => {
       const hash = typeof window !== 'undefined' ? window.location.hash : '';
-      if (hash) {
-        const id = hash.replace(/^#/, "");
+      if (!hash) return;
+      
+      const id = hash.replace(/^#/, "");
+      if (!id) return;
+      
+      // Batch all DOM operations in a single frame to avoid forced reflow
+      requestAnimationFrame(() => {
         const el = document.getElementById(id);
-        if (el) {
-          // Use requestAnimationFrame to batch the layout read
-          requestAnimationFrame(() => {
-            // Batch all DOM reads together to avoid forced reflow
-            const rect = el.getBoundingClientRect();
-            const scrollY = window.pageYOffset || window.scrollY || 0;
-            const y = rect.top + scrollY - NAV_OFFSET_PX;
-            
-            // Use requestAnimationFrame again for the write operation
-            requestAnimationFrame(() => {
-              window.scrollTo({ top: y, behavior: "smooth" });
-            });
-          });
-        }
-      }
+        if (!el) return;
+        
+        // Batch all reads together before any writes
+        const rect = el.getBoundingClientRect();
+        const scrollY = window.pageYOffset || window.scrollY || 0;
+        const y = rect.top + scrollY - NAV_OFFSET_PX;
+        
+        // Write in next frame after all reads are complete
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: y, behavior: "smooth" });
+        });
+      });
     };
 
-    // Give route a tick to mount, then use RAF to avoid forced reflow
+    // Wait for DOM to be ready, then use RAF to avoid forced reflow
+    // Increased delay slightly to ensure all layout is complete
     const timer = setTimeout(() => {
-      requestAnimationFrame(scrollToHash);
-    }, 100); // Slightly longer delay to ensure DOM is ready
+      if (document.readyState === 'complete') {
+        requestAnimationFrame(scrollToHash);
+      } else {
+        window.addEventListener('load', () => {
+          requestAnimationFrame(scrollToHash);
+        }, { once: true });
+      }
+    }, 150);
 
     return () => clearTimeout(timer);
   }, [pathname]);

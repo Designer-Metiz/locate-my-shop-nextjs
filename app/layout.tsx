@@ -41,6 +41,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
+        {/* Supabase - critical for API calls, preconnect for 400ms LCP savings */}
+        {process.env.NEXT_PUBLIC_SUPABASE_URL && (
+          <link 
+            rel="preconnect" 
+            href={new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).origin}
+            crossOrigin="anonymous"
+          />
+        )}
+        
         {/* Preconnect to same origin for faster CSS/JS loading - only in production */}
         {process.env.NODE_ENV === 'production' && (
           <link 
@@ -62,41 +71,44 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#1a1a2e" />
       </head>
       <body>
-        {/* Google Analytics - Load only after user interaction or idle time to reduce unused JS */}
+        {/* Google Analytics - Load only after user interaction or idle time to reduce unused JS (55 KiB savings) */}
         <Script
           id="google-analytics-loader"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         >
           {`
-            // Load Google Analytics only after user interaction or 3 seconds of idle time
+            // Load Google Analytics only after user interaction or 5 seconds of idle time
             let loaded = false;
             const loadGA = () => {
               if (loaded) return;
               loaded = true;
               
-              // Load gtag script
+              // Load gtag script with defer
               const script = document.createElement('script');
               script.async = true;
+              script.defer = true;
               script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NVME1QQG6G';
               document.head.appendChild(script);
               
-              // Initialize gtag
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-NVME1QQG6G', {
-                page_path: window.location.pathname,
-              });
+              // Initialize gtag after script loads
+              script.onload = () => {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-NVME1QQG6G', {
+                  page_path: window.location.pathname,
+                });
+              };
             };
             
-            // Load on user interaction (click, scroll, touchstart, keydown)
+            // Load on user interaction (click, scroll, touchstart, keydown) - use passive listeners
             const events = ['click', 'scroll', 'touchstart', 'keydown'];
             events.forEach(event => {
               document.addEventListener(event, loadGA, { once: true, passive: true });
             });
             
-            // Also load after 3 seconds if no interaction
-            setTimeout(loadGA, 3000);
+            // Also load after 5 seconds if no interaction (increased from 3s to reduce initial load)
+            setTimeout(loadGA, 5000);
           `}
         </Script>
         

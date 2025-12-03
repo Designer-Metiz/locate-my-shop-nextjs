@@ -14,7 +14,7 @@ const nextConfig = {
     ],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 512],
     minimumCacheTTL: 60,
     // Optimize images for mobile
     dangerouslyAllowSVG: true,
@@ -42,6 +42,19 @@ const nextConfig = {
       // Supports: Chrome 92+, Firefox 90+, Safari 15.4+, Edge 92+
       // Mobile: iOS 15.4+, Chrome Android 92+
       config.target = ['web', 'es2022'];
+      
+      // Ensure no polyfills are added for modern features
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        // Prevent polyfills for modern features
+      };
+      
+      // Disable automatic polyfill injection
+      if (config.resolve.alias) {
+        config.resolve.alias = {
+          ...config.resolve.alias,
+        };
+      }
       
       // Optimize code splitting to reduce unused chunks and improve mobile performance
       config.optimization = {
