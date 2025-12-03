@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin } from "lucide-react";
+import Image from "next/image";
 // Updated to use uploaded image
 
 const HeroSection = () => {
@@ -75,10 +76,14 @@ const HeroSection = () => {
           {/* Right content - Hero Image */}
           <div className="relative animate-float mt-8 lg:mt-0">
             <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-elegant">
-              <img 
+              <Image 
                 src="/lovable-uploads/ab9dfdbc-d12f-4b79-b4ba-ddf2797c0169.png" 
                 alt="Store Locator dashboard showing fully responsive design on laptop and mobile devices"
+                width={1200}
+                height={800}
                 className="w-full h-auto object-cover"
+                priority
+                quality={85}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
             </div>

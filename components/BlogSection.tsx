@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, ArrowRight, BookOpen, Loader2 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useBlogPosts } from "@/hooks/useBlogData";
 
 const BlogSection = () => {
@@ -43,11 +44,14 @@ const BlogSection = () => {
               <Card key={post.id} className="gradient-card border-0 shadow-elegant hover:shadow-card transition-smooth group overflow-hidden relative cursor-pointer">
                 <Link href={`/blog/${post.slug}`} className="absolute inset-0 z-10" aria-label={post.title} />
                 <div className="relative">
-                  <img 
+                  <Image 
                     src={post.image_url} 
                     alt={post.title}
+                    width={400}
+                    height={192}
                     className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
+                    quality={80}
                   />
                   <div className="absolute top-4 right-4">
                     <div className="bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-xs font-medium">

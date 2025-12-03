@@ -88,6 +88,14 @@
   * { @apply border-border; }
   body { @apply bg-background text-foreground font-sans antialiased; }
   html { scroll-behavior: smooth; }
+  
+  /* Font display optimization */
+  @font-face {
+    font-family: system-ui;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
   .gradient-hero { background: var(--hero-gradient); }
   .gradient-card { background: var(--card-gradient); }
   .gradient-section { background: var(--section-gradient); }

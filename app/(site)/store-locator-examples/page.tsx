@@ -1,6 +1,7 @@
 import { ArrowRight, CheckCircle, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -297,19 +298,31 @@ export default function StoreLocatorExamples() {
                     <div className="grid grid-cols-1 gap-3 md:gap-4">
                       <div>
                         <h4 className="font-medium mb-2 text-sm md:text-base">{style.name} Map Style</h4>
-                        <img
-                          src={style.previewImage}
-                          alt={`${style.name} Map Style - MSPL Store Locator`}
-                          className="w-full rounded-lg border aspect-video object-cover"
-                        />
+                        <div className="relative w-full aspect-video rounded-lg border overflow-hidden">
+                          <Image
+                            src={style.previewImage}
+                            alt={`${style.name} Map Style - MSPL Store Locator`}
+                            fill
+                            className="object-cover"
+                            loading="lazy"
+                            quality={80}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
+                        </div>
                       </div>
                       <div>
                         <h4 className="font-medium mb-2 text-sm md:text-base">{style.name} Map Look</h4>
-                        <img
-                          src={style.demoImage}
-                          alt={`${style.name} Map Look - MSPL Store Locator`}
-                          className="w-full rounded-lg border aspect-video object-cover"
-                        />
+                        <div className="relative w-full aspect-video rounded-lg border overflow-hidden">
+                          <Image
+                            src={style.demoImage}
+                            alt={`${style.name} Map Look - MSPL Store Locator`}
+                            fill
+                            className="object-cover"
+                            loading="lazy"
+                            quality={80}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
+                        </div>
                       </div>
                     </div>
                   </CardContent>
@@ -411,11 +424,15 @@ export default function StoreLocatorExamples() {
                       </div>
 
                       {example.demoImage && (
-                        <div className="flex-1">
-                          <img
+                        <div className="flex-1 relative w-full aspect-video rounded-lg border shadow-lg overflow-hidden">
+                          <Image
                             src={example.demoImage}
                             alt={`${example.name} Demo`}
-                            className="w-full rounded-lg border shadow-lg"
+                            fill
+                            className="object-cover"
+                            loading="lazy"
+                            quality={80}
+                            sizes="(max-width: 1024px) 100vw, 50vw"
                           />
                         </div>
                       )}

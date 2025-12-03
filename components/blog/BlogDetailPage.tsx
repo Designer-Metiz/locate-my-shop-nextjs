@@ -2,6 +2,8 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import Image from "next/image";
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -118,12 +120,17 @@ const BlogDetailPage = ({ slug: slugProp }: Props) => {
 
                 {/* Featured Image */}
                 <Card className="overflow-hidden gradient-card border-0 shadow-card mb-8">
-                  <img
-                    src={currentPost.image_url}
-                    alt={currentPost.title}
-                    className="object-cover rounded-lg"
-                    style={{ width: '834px', height: '384px', margin: '0 auto', display: 'block' }}
-                  />
+                  <div className="relative w-full" style={{ height: '384px' }}>
+                    <Image
+                      src={currentPost.image_url}
+                      alt={currentPost.title}
+                      fill
+                      className="object-cover rounded-lg"
+                      priority
+                      quality={85}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 834px, 834px"
+                    />
+                  </div>
                 </Card>
 
                 {/* Article Content */}
@@ -220,10 +227,14 @@ const BlogDetailPage = ({ slug: slugProp }: Props) => {
                         {relatedPosts.map((post) => (
                           <Link key={post.id} href={`/blog/${post.slug}`} className="block group">
                             <div className="flex gap-3">
-                              <img
+                              <Image
                                 src={post.image_url}
                                 alt={post.title}
+                                width={64}
+                                height={64}
                                 className="w-16 h-16 object-cover rounded-lg"
+                                loading="lazy"
+                                quality={75}
                               />
                               <div className="flex-1">
                                 <h4 className="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2 text-foreground">

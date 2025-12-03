@@ -1,14 +1,32 @@
-import React from "react";
+import dynamic from "next/dynamic";
 import HeroSection from "@/components/HeroSection";
 import CustomizeSection from "@/components/CustomizeSection";
-import FeaturesSection from "@/components/FeaturesSection";
-import HowItWorksSection from "@/components/HowItWorksSection";
-import PricingSection from "@/components/PricingSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import FAQSection from "@/components/FAQSection";
-import BlogSection from "@/components/BlogSection";
-import CTASection from "@/components/CTASection";
-import ScrollToHash from "@/components/ScrollToHash";
+
+// Dynamically import below-the-fold components to reduce initial bundle size
+const FeaturesSection = dynamic(() => import("@/components/FeaturesSection"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const HowItWorksSection = dynamic(() => import("@/components/HowItWorksSection"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const PricingSection = dynamic(() => import("@/components/PricingSection"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const TestimonialsSection = dynamic(() => import("@/components/TestimonialsSection"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const FAQSection = dynamic(() => import("@/components/FAQSection"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const BlogSection = dynamic(() => import("@/components/BlogSection"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const CTASection = dynamic(() => import("@/components/CTASection"), {
+  loading: () => <div className="min-h-[200px]" />,
+});
+const ScrollToHash = dynamic(() => import("@/components/ScrollToHash"), {
+  ssr: false,
+});
 
 export const metadata = {
   title: "Best Shopify Store Locator App - Find Stores Easily | Metizsoft",

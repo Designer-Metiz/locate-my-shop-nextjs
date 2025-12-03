@@ -1,6 +1,9 @@
 import "./globals.css";
+// Quill CSS is loaded conditionally in admin pages and needed for blog prose styles
+// Import it here but it will be tree-shaken if not used
 import "@/styles/quill.css";
 import type { Metadata } from "next";
+import Script from "next/script";
 import { ReactQueryClientProvider } from "@/components/providers/ReactQueryClientProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { Toaster } from "@/components/ui/toaster";
@@ -30,7 +33,28 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Preconnect to external domains for faster resource loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+      </head>
       <body>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-NVME1QQG6G"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-NVME1QQG6G');
+          `}
+        </Script>
+        
         <ReactQueryClientProvider>
           <ThemeProvider>
             <TooltipProvider>
