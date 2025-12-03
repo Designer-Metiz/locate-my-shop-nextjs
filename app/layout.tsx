@@ -34,19 +34,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Preconnect to external domains for faster resource loading */}
+        {/* Preconnect to critical external origins for faster resource loading */}
+        {/* Fonts - critical for FCP, use preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* Analytics - non-critical, use dns-prefetch only */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        
+        {/* YouTube - for iframe, use dns-prefetch */}
+        <link rel="dns-prefetch" href="https://www.youtube.com" />
+        <link rel="dns-prefetch" href="https://i.ytimg.com" />
       </head>
       <body>
-        {/* Google Analytics */}
+        {/* Google Analytics - Deferred to reduce unused JS */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-NVME1QQG6G"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

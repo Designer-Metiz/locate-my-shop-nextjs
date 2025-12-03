@@ -44,7 +44,7 @@ export default function Page() {
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://www.storelocator.in/#website",
+        "@id": "https://www.storelocator.in/website",
         "url": "https://www.storelocator.in/",
         "name": "StoreLocator.in",
         "potentialAction": {

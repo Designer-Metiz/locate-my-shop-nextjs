@@ -2,6 +2,7 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
+  // Optimize CSS output - Tailwind v3 automatically purges unused styles in production
   content: [
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",

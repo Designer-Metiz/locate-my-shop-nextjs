@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font display optimization for all fonts */
+@font-face {
+  font-family: 'system-ui';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

@@ -1,4 +1,5 @@
 import { MapPin, Mail, Phone, Globe } from "lucide-react";
+import Image from "next/image";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -6,8 +7,8 @@ const Footer = () => {
   const footerLinks = {
     product: [
       { label: "Overview", href: "/" },
-      { label: "Features", href: "/#features" },
-      { label: "Pricing", href: "/#pricing" },
+      { label: "Features", href: "/features" },
+      { label: "Pricing", href: "/pricing" },
       { label: "Store Locator Examples", href: "/store-locator-examples" },
       { label: "Platforms", href: "#" },
       { label: "Use Cases", href: "#" },
@@ -45,7 +46,7 @@ const Footer = () => {
     ],
     resources: [
       { label: "Help & Support", href: "https://support.metizsoft.com/portal/en/kb/store-locator-by-metizsoft" },
-      { label: "FAQ", href: "/#faq" },
+      { label: "FAQ", href: "/faq" },
       { label: "Blog", href: "/blog" },
       { label: "Add a store locator to Squarespace", href: "#" },
       { label: "Add a store locator to Shopify", href: "#" },
@@ -65,11 +66,15 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="lg:col-span-1 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="h-12 w-12 rounded-[5px] flex items-center justify-center">
-                <img 
+              <div className="h-12 w-12 rounded-[5px] flex items-center justify-center relative">
+                <Image 
                   src="/lovable-uploads/e38b2a7e-a356-4be7-a266-c52662189454.png" 
                   alt="MSPL Store Locator Logo" 
-                  className="h-12 w-12 object-contain rounded-[5px]"
+                  width={48}
+                  height={48}
+                  className="object-contain rounded-[5px]"
+                  quality={90}
+                  sizes="48px"
                 />
               </div>
               <div>

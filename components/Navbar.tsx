@@ -3,16 +3,17 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Menu, X } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: "Features", href: "/#features" },
-    { label: "How It Works", href: "/#how-it-works" },
-    { label: "Pricing", href: "/#pricing" },
-    { label: "Testimonials", href: "/#testimonials" },
-    { label: "FAQ", href: "/#faq" },
+    { label: "Features", href: "/features" },
+    { label: "How It Works", href: "/how-it-works" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Testimonials", href: "/testimonials" },
+    { label: "FAQ", href: "/faq" },
     { label: "Blog", href: "/blog" },
     { label: "Support", href: "https://support.metizsoft.com/portal/en/kb/store-locator-by-metizsoft", external: true },
     { label: "Contact", href: "/contact" }
@@ -24,11 +25,16 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <div className="h-8 w-8 rounded-[5px] flex items-center justify-center">
-              <img 
+            <div className="h-8 w-8 rounded-[5px] flex items-center justify-center relative">
+              <Image 
                 src="/lovable-uploads/e38b2a7e-a356-4be7-a266-c52662189454.png" 
                 alt="MSPL Store Locator Logo" 
-                className="h-8 w-8 object-contain rounded-[5px]"
+                width={32}
+                height={32}
+                className="object-contain rounded-[5px]"
+                priority
+                quality={90}
+                sizes="32px"
               />
             </div>
             <div>
