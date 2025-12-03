@@ -170,9 +170,9 @@ const FeaturesSection = () => {
                     
                     {/* Content */}
                     <div className="flex-1 space-y-2">
-                      <h4 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                      <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                         {feature.title}
-                      </h4>
+                      </h3>
                       <p className="text-muted-foreground leading-relaxed">
                         {feature.description}
                       </p>

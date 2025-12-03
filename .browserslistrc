@@ -1,0 +1,20 @@
+# Modern browsers only - removes legacy JavaScript polyfills
+# Targets browsers that support ES2022+ features natively
+# This removes polyfills for: Array.at, Array.flat, Array.flatMap, 
+# Object.fromEntries, Object.hasOwn, String.trimEnd, String.trimStart
+
+# Desktop browsers
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 Safari versions
+last 2 Edge versions
+
+# Mobile browsers
+iOS >= 15.4
+ChromeAndroid >= 92
+Samsung >= 15
+
+# Exclude dead browsers
+not dead
+not IE 11
+

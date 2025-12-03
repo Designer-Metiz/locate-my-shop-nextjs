@@ -77,12 +77,13 @@ const BlogSection = () => {
                     </p>
                     <Button 
                       variant="outline" 
-                      className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all"
+                      className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all text-left"
                       asChild
                     >
                       <Link href={`/blog/${post.slug}`}>
-                        Read More
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        Read: {post.title.split(' ').slice(0, 4).join(' ')}
+                        {post.title.split(' ').length > 4 && '...'}
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 shrink-0" />
                       </Link>
                     </Button>
                   </div>

@@ -89,7 +89,7 @@ const PricingSection = () => {
               className="relative group transition-smooth hover:-translate-y-2 bg-primary text-primary-foreground shadow-glow border-0 flex flex-col h-full"
             >
               {plan.popular && (
-                <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent text-accent-foreground shadow-card">
+                <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-accent text-white shadow-card font-semibold">
                   Most Popular
                 </Badge>
               )}

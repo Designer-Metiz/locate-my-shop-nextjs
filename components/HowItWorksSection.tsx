@@ -52,7 +52,7 @@ const HowItWorksSection = () => {
               <Card className="relative overflow-hidden gradient-card border-0 shadow-card group-hover:shadow-elegant transition-smooth group-hover:-translate-y-2">
                 <CardContent className="p-8 text-center space-y-6">
                   {/* Step number */}
-                  <div className="absolute top-4 right-4 text-6xl font-bold text-primary/10 group-hover:text-primary/20 transition-colors">
+                  <div className="absolute top-4 right-4 text-6xl font-bold text-primary/15 group-hover:text-primary/25 transition-colors" aria-hidden="true">
                     {step.number}
                   </div>
                   
@@ -82,7 +82,7 @@ const HowItWorksSection = () => {
         <div className="text-center">
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-card border rounded-2xl p-6 shadow-card">
             <div className="text-center sm:text-left">
-              <h4 className="font-semibold text-lg mb-1">Ready to get started?</h4>
+              <h3 className="font-semibold text-lg mb-1">Ready to get started?</h3>
               <p className="text-sm text-muted-foreground">Join thousands of stores already using our locator</p>
             </div>
             <Button variant="cta" size="lg" className="shrink-0" asChild>

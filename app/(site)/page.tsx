@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import Script from "next/script";
 import HeroSection from "@/components/HeroSection";
 import CustomizeSection from "@/components/CustomizeSection";
 
@@ -165,13 +166,14 @@ export default function Page() {
 
   return (
     <div className="min-h-screen">
+      {/* JSON-LD Schema - Loaded with Script component for better performance */}
+      <Script
+        id="homepage-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homePageSchema) }}
+      />
       <main>
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        {/* @ts-ignore - JSON-LD schema script */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(homePageSchema) }}
-        />
         <div className="my-[15px]">
           <HeroSection />
         </div>

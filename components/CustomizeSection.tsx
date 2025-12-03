@@ -160,7 +160,7 @@ const CustomizeSection = () => {
                         </div>
                       ) : (
                         <div 
-                          className="text-muted-foreground font-medium text-lg transition-opacity cursor-pointer opacity-60 hover:opacity-100"
+                          className="text-foreground/70 font-medium text-lg transition-opacity cursor-pointer hover:opacity-100"
                           style={{ 
                             fontFamily: brand.name === 'nora fleming' || brand.name === 'monomarket' ? 'cursive' : 
                                         brand.name === 'ENGLANDER' || brand.name === 'E-RIDE PROS' ? 'Arial Black, sans-serif' : 

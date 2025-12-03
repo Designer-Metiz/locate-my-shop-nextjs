@@ -73,6 +73,9 @@ const Navbar = () => {
             size="icon"
             className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
@@ -80,7 +83,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 space-y-3 border-t border-border/50 bg-background/95 backdrop-blur-lg">
+          <div id="mobile-navigation" className="md:hidden py-4 space-y-3 border-t border-border/50 bg-background/95 backdrop-blur-lg">
             {navLinks.map((link) => (
               link.external ? (
                 <a
