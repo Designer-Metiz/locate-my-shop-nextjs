@@ -92,9 +92,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               
               // Initialize gtag after script loads
               script.onload = () => {
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
                 gtag('config', 'G-NVME1QQG6G', {
                   page_path: window.location.pathname,
                 });
