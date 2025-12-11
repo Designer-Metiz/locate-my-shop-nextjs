@@ -69,8 +69,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Mobile optimization - prevent layout shift */}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
         <meta name="theme-color" content="#1a1a2e" />
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVME1QQG6G" />
-<Script id="gtag-init">
+<Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-NVME1QQG6G"
+  strategy="afterInteractive"
+/>
+
+<Script id="gtag-init" strategy="afterInteractive">
   {`
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -78,6 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     gtag('config', 'G-NVME1QQG6G');
   `}
 </Script>
+
 
       </head>
       <body>
