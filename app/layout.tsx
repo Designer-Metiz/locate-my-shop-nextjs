@@ -30,6 +30,11 @@ export const metadata: Metadata = {
     apple: "/lovable-uploads/e38b2a7e-a356-4be7-a266-c52662189454.png",
     shortcut: "/lovable-uploads/e38b2a7e-a356-4be7-a266-c52662189454.png",
   },
+  // Optional: allow Search Console verification via meta tag
+  // Add token in NEXT_PUBLIC_GSC_VERIFICATION to emit the tag
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -69,63 +74,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Mobile optimization - prevent layout shift */}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
         <meta name="theme-color" content="#1a1a2e" />
-<Script
-  src="https://www.googletagmanager.com/gtag/js?id=G-NVME1QQG6G"
-  strategy="afterInteractive"
-/>
-
-<Script id="gtag-init" strategy="afterInteractive">
-  {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-NVME1QQG6G');
-  `}
-</Script>
+        {/* Google Analytics 4 - required in <head> for Search Console verification via GA */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-NVME1QQG6G"
+          strategy="beforeInteractive"
+        />
+        <Script id="ga4-init" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-NVME1QQG6G');
+          `}
+        </Script>
 
 
       </head>
       <body>
-        {/* Google Analytics - Load only after user interaction or idle time to reduce unused JS (55 KiB savings) */}
-        <Script
-          id="google-analytics-loader"
-          strategy="lazyOnload"
-        >
-          {`
-            // Load Google Analytics only after user interaction or 5 seconds of idle time
-            let loaded = false;
-            const loadGA = () => {
-              if (loaded) return;
-              loaded = true;
-              
-              // Load gtag script with defer
-              const script = document.createElement('script');
-              script.async = true;
-              script.defer = true;
-              script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NVME1QQG6G';
-              document.head.appendChild(script);
-              
-              // Initialize gtag after script loads
-              script.onload = () => {
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-                gtag('config', 'G-NVME1QQG6G', {
-                  page_path: window.location.pathname,
-                });
-              };
-            };
-            
-            // Load on user interaction (click, scroll, touchstart, keydown) - use passive listeners
-            const events = ['click', 'scroll', 'touchstart', 'keydown'];
-            events.forEach(event => {
-              document.addEventListener(event, loadGA, { once: true, passive: true });
-            });
-            
-            // Also load after 5 seconds if no interaction (increased from 3s to reduce initial load)
-            setTimeout(loadGA, 5000);
-          `}
-        </Script>
+        
         
         <ReactQueryClientProvider>
           <ThemeProvider>
