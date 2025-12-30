@@ -137,13 +137,13 @@ const FeaturesSection = () => {
         <div className="text-center mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
             <Zap className="h-4 w-4" />
-            Shopify Store Locator App Features
+             Store Locator App Features
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight">
-            <span className="gradient-hero bg-clip-text text-transparent">Key Features That Work as a Shopify Store Finder</span>
+            <span className="gradient-hero bg-clip-text text-transparent">Key Features That Work as a  Store Finder</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Everything you need to create a smooth store locator experience across multiple Shopify stores.
+            Everything you need to create a smooth store locator experience across multiple stores.
           </p>
         </div>
 

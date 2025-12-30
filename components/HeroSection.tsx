@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 // Updated to use uploaded image
 
 const HeroSection = () => {
@@ -16,12 +17,12 @@ const HeroSection = () => {
           <div className="space-y-6 md:space-y-8 animate-fade-in-up">
             <div className="space-y-3 md:space-y-4">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tight">
-                Shopify Store Locator App – 
-                <span className="gradient-hero bg-clip-text text-transparent block sm:inline">Bulk Upload, Custom Maps & Advanced Analytics</span>
+                 Store Locator App – <br />
+                <span className="gradient-hero bg-clip-text text-transparent block sm:inline"> Bulk Upload, Custom Maps & Advanced Analytics</span>
               </h1>
               
               <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-2xl">
-                Empower customers to find your stores with our Shopify store locator app for easy setup and real-time store management.
+                Empower customers to find your stores with our  store locator app for easy setup and real-time store management.
               </p>
             </div>
 
@@ -47,16 +48,15 @@ const HeroSection = () => {
                 variant="outline"
                 size="xl"
                 className="px-6 md:px-8 py-3 md:py-4 text-sm md:text-base"
-                aria-label="View Demo"
-                onClick={() => {
-                  window.open(
-                    "https://store-locator-metizsoft.myshopify.com/a/storelocator?_bt=BAh7BkkiC19yYWlscwY6BkVUewhJIglkYXRhBjsAVEkiKnN0b3JlLWxvY2F0b3ItbWV0aXpzb2Z0Lm15c2hvcGlmeS5jb20GOwBGSSIIZXhwBjsAVEkiHTIwMjUtMDgtMjlUMDY6NTI6NDQuOTM2WgY7AFRJIghwdXIGOwBUSSIecGVybWFuZW50X3Bhc3N3b3JkX2J5cGFzcwY7AEY%3D--8483bf7245eca1a925f86e83b9aa73463f93fd68",
-                    "_blank",
-                    "noopener,noreferrer"
-                  );
-                }}
+                aria-label="View Examples"
+                asChild
               >
-                View Demo
+                <Link
+                  href="/store-locator-examples"
+                  rel="noopener noreferrer"
+                >
+                  View Examples
+                </Link>
               </Button>
             </div>
 

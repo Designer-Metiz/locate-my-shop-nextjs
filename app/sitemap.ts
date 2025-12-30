@@ -14,6 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/features',
     '/contact',
     '/store-locator-examples',
+    '/store-locator-layout',
   ].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date() }));
 
   const { data: posts } = await supabase

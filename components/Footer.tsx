@@ -19,7 +19,7 @@ const Footer = () => {
     ],
     features: [
       { label: "Google Maps & MapBox Integration", href: "#" },
-      { label: "Bulk Upload & CSV Import", href: "#" },
+      { label: "Upload Locations using Google Sheets", href: "#" },
       { label: "Customizable Maps & Icons", href: "#" },
       { label: "Search Filters & Location Search", href: "#" },
       { label: "Analytics & Performance Tracking", href: "#" },
@@ -50,7 +50,7 @@ const Footer = () => {
       { label: "Blog", href: "/blog" },
       { label: "Add a store locator to Squarespace", href: "#" },
       { label: "Add a store locator to Shopify", href: "#" },
-      { label: "Add a store locator to Wordpress", href: "#" },
+      { label: "Add a store locator to Wordpress", href: "https://support.metizsoft.com/portal/en/kb/store-locator-by-metizsoft/storelocator-for-wordpress", external: true },
       { label: "Add a store locator to Webflow", href: "#" },
       { label: "Add a store locator to your website", href: "#" }
     ],

@@ -75,10 +75,10 @@ const PricingSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight">
-            <span className="gradient-hero bg-clip-text text-transparent">Find the Right Plan for Your Shopify Store</span>
+            <span className="gradient-hero bg-clip-text text-transparent">Find the Right Plan for Your Store</span>
           </h2>
           <p className="text-xl text-muted-foreground mx-auto whitespace-nowrap">
-            Try the store locator Shopify free version and upgrade as your business grows
+            Try the store locator  free version and upgrade as your business grows
           </p>
         </div>
 

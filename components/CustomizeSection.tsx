@@ -22,6 +22,19 @@ const CustomizeSection = () => {
   const plugin = useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
   );
+  // New example company logos to appear first in the carousel
+  const exampleCompanyLogos = [
+    { name: "BigTree", logo: "/assets/example-company-logos/BigTree-logo.png", type: "image" },
+    { name: "Cherry Lane", logo: "/assets/example-company-logos/Cherry lane-logo.png", type: "image" },
+    { name: "Comvita", logo: "/assets/example-company-logos/Comvita-logo.png", type: "image" },
+    { name: "Elementor", logo: "/assets/example-company-logos/Elementor-logo.png", type: "image" },
+    { name: "Englander", logo: "/assets/example-company-logos/englander-logo.png", type: "image" },
+    { name: "Handpan World", logo: "/assets/example-company-logos/handpan-logo.png", type: "image" },
+    { name: "Joomla", logo: "/assets/example-company-logos/Joomla-logo.png", type: "image" },
+    { name: "Nuvita", logo: "/assets/example-company-logos/Nuvita-logo.png", type: "image" },
+    { name: "Philips", logo: "/assets/example-company-logos/Philips-logo.png", type: "image" },
+    { name: "Quality", logo: "/assets/example-company-logos/Quality-logo.png", type: "image" },
+  ];
   const features = [
     {
       icon: Settings,
@@ -102,8 +115,8 @@ const CustomizeSection = () => {
             {/* CTA Button */}
             <div className="pt-4">
               <Button className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium" asChild>
-                <Link href={"/store-locator-examples" as any}>
-                  Browse store locator examples
+                <Link href={"/store-locator-layout" as any}>
+                  Browse store locator layout
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
@@ -142,7 +155,7 @@ const CustomizeSection = () => {
               className="w-full"
             >
               <CarouselContent className="-ml-2 md:-ml-4">
-                {brandLogos.map((brand, index) => (
+                {[...exampleCompanyLogos, ...brandLogos].map((brand, index) => (
                   <CarouselItem key={brand.name} className="pl-2 md:pl-4 basis-1/3 md:basis-1/4 lg:basis-1/5">
                     <div className="flex items-center justify-center h-16">
                       {brand.type === "image" ? (

@@ -7,6 +7,9 @@ import CustomizeSection from "@/components/CustomizeSection";
 const FeaturesSection = dynamic(() => import("@/components/FeaturesSection"), {
   loading: () => <div className="min-h-[400px]" />,
 });
+const PlatformLogosCarousel = dynamic(() => import("@/components/PlatformLogosCarousel"), {
+  loading: () => <div className="min-h-[120px]" />,
+});
 const HowItWorksSection = dynamic(() => import("@/components/HowItWorksSection"), {
   loading: () => <div className="min-h-[400px]" />,
 });
@@ -102,6 +105,14 @@ export default function Page() {
         </section>
         <section id="pricing" className="my-[15px] scroll-mt-28">
           <PricingSection />
+        </section>
+        <section className="my-[15px]">
+          <div className="text-center space-y-6">
+            <p className="text-lg text-muted-foreground font-medium">
+              Works seamlessly across your favorite platforms
+            </p>
+            <PlatformLogosCarousel />
+          </div>
         </section>
         <section id="testimonials" className="my-[15px] scroll-mt-28">
           <TestimonialsSection />
