@@ -36,9 +36,6 @@ export const metadata = {
   title: "Best Shopify Store Locator App - Find Stores Easily",
   description:
     "Metizsoft's Shopify app helps customers find stores quickly with custom maps, bulk uploads, and mobile-friendly design. Ideal for businesses needing efficient store location solutions.",
-  alternates: {
-    canonical: "https://storelocator.in",
-  },
 };
 
 export default function Page() {

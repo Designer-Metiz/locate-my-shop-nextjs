@@ -8,9 +8,6 @@ export const metadata: Metadata = {
   title: "Store Locator Examples I MSPL Shopify Store Locator App ",
   description:
     "View examples of our store locator, which is simple yet powerful. Set up in minutes, works on all platforms, and requires no coding knowledge.",
-  alternates: {
-    canonical: "/store-locator-examples",
-  },
   openGraph: {
     title: "Store Locator Examples I MSPL Shopify Store Locator App ",
     description:

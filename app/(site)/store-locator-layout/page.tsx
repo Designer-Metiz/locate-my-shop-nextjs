@@ -8,9 +8,6 @@ export const metadata: Metadata = {
   title: "Store Locator Layout I MSPL Shopify Store Locator App ",
   description:
     "Explore layout and map styles to personalize your store locator. Choose the right visual style and layout that best aligns with your brand and user experience.",
-  alternates: {
-    canonical: "/store-locator-layout",
-  },
   openGraph: {
     title: "Store Locator Layout I MSPL Shopify Store Locator App ",
     description:
