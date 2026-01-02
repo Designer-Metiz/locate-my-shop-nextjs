@@ -9,11 +9,11 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: "Features", href: "/#features" },
-    { label: "How It Works", href: "/#how-it-works" },
+    // Removed: Features, How It Works
     { label: "Pricing", href: "/#pricing" },
-    { label: "Testimonials", href: "/#testimonials" },
+    // Removed: Testimonials
     { label: "FAQ", href: "/#faq" },
+    { label: "View Examples", href: "https://www.storelocator.in/store-locator-examples", external: true },
     { label: "Blog", href: "/blog" },
     { label: "Support", href: "https://support.metizsoft.com/portal/en/kb/store-locator-by-metizsoft", external: true },
     { label: "Contact", href: "/contact" }

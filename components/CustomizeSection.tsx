@@ -30,10 +30,11 @@ const CustomizeSection = () => {
     { name: "Elementor", logo: "/assets/example-company-logos/Elementor-logo.png", type: "image" },
     { name: "Englander", logo: "/assets/example-company-logos/englander-logo.png", type: "image" },
     { name: "Handpan World", logo: "/assets/example-company-logos/handpan-logo.png", type: "image" },
-    { name: "Joomla", logo: "/assets/example-company-logos/Joomla-logo.png", type: "image" },
     { name: "Nuvita", logo: "/assets/example-company-logos/Nuvita-logo.png", type: "image" },
     { name: "Philips", logo: "/assets/example-company-logos/Philips-logo.png", type: "image" },
     { name: "Quality", logo: "/assets/example-company-logos/Quality-logo.png", type: "image" },
+    // Added brand logos moved from platform carousel
+    { name: "Theobroma", logo: "/assets/plateform-logos/Theobroma-logo.png", type: "image" },
   ];
   const features = [
     {

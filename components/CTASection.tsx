@@ -74,7 +74,7 @@ const CTASection = () => {
                 <div className="flex justify-center">
                   <MapPin className="h-6 w-6" />
                 </div>
-                <div className="text-2xl font-bold">1000+</div>
+                <div className="text-2xl font-bold">3000+</div>
                 <div className="text-sm opacity-80">Active Stores</div>
               </CardContent>
             </Card>

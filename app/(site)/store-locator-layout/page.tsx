@@ -5,21 +5,22 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Store Locator Layout I MSPL Shopify Store Locator App ",
+  title: "Best Store Locator Layout Examples & Designs",
   description:
-    "Explore layout and map styles to personalize your store locator. Choose the right visual style and layout that best aligns with your brand and user experience.",
+    "View map-based store locator layouts and design ideas. Choose a flexible store locator app layout that fits your site. See examples now.",
+  alternates: { canonical: "/store-locator-layout" },
   openGraph: {
-    title: "Store Locator Layout I MSPL Shopify Store Locator App ",
+    title: "Best Store Locator Layout Examples & Designs",
     description:
-      "Explore layout and map styles to personalize your store locator. Choose the right visual style and layout that best aligns with your brand and user experience.",
+      "View map-based store locator layouts and design ideas. Choose a flexible store locator app layout that fits your site. See examples now.",
     type: "website",
     url: "/store-locator-layout",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Store Locator Layout I MSPL Shopify Store Locator App ",
+    title: "Best Store Locator Layout Examples & Designs",
     description:
-      "Explore layout and map styles to personalize your store locator. Choose the right visual style and layout that best aligns with your brand and user experience.",
+      "View map-based store locator layouts and design ideas. Choose a flexible store locator app layout that fits your site. See examples now.",
   },
 };
 
@@ -99,7 +100,7 @@ export default function StoreLocatorLayout() {
         <section className="py-8 md:py-12 lg:py-16 bg-gradient-to-b from-background to-muted/30" style={{ marginBottom: "10px" }}>
           <div className="container mx-auto px-4 md:px-6 max-w-7xl">
             <div className="text-center mb-8 md:mb-12 lg:mb-16">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-primary to-primary-soft bg-clip-text text-transparent">
+              <h1 className="text-3xl leading-normal md:text-4xl lg:text-5xl xl:text-6xl xl:leading-normal font-bold mb-4 md:mb-6 bg-gradient-to-r from-primary to-primary-soft bg-clip-text text-transparent">
                 Store Locator Layout
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 md:mb-8 px-2">

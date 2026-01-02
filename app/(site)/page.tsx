@@ -33,9 +33,10 @@ const ScrollToHash = dynamic(() => import("@/components/ScrollToHash"), {
 });
 
 export const metadata = {
-  title: "Best Shopify Store Locator App - Find Stores Easily",
+  title: "Custom Store Locator App with Maps, Search & Filters",
   description:
-    "Metizsoft's Shopify app helps customers find stores quickly with custom maps, bulk uploads, and mobile-friendly design. Ideal for businesses needing efficient store location solutions.",
+    "Help customers find stores fast with a mobile-friendly store locator app. Custom maps, bulk uploads, Google Sheet auto sync. Get started today.",
+  alternates: { canonical: "/" },
 };
 
 export default function Page() {
@@ -106,12 +107,17 @@ export default function Page() {
         <section id="pricing" className="my-[15px] scroll-mt-28">
           <PricingSection />
         </section>
-        <section className="my-[15px]">
-          <div className="text-center space-y-6">
-            <p className="text-lg text-muted-foreground font-medium">
-              Works seamlessly across your favorite platforms
+        <section id="platforms" className="my-[24px]">
+          <div className="text-center space-y-8">
+            <p className="text-4xl font-bold">
+              <span className="text-4xl">Works Seamlessly </span>
+              <span className="gradient-hero bg-clip-text text-transparent">
+                 Across Your Favorite Platforms
+              </span>
             </p>
-            <PlatformLogosCarousel />
+            <div className="pt-2 pb-2">
+              <PlatformLogosCarousel />
+            </div>
           </div>
         </section>
         <section id="testimonials" className="my-[15px] scroll-mt-28">

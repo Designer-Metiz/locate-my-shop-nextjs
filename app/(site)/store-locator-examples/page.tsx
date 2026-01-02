@@ -5,21 +5,22 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Store Locator Examples I MSPL Shopify Store Locator App ",
+  title: "Best Store Locator Examples with Maps",
   description:
-    "View examples of our store locator, which is simple yet powerful. Set up in minutes, works on all platforms, and requires no coding knowledge.",
+    "Browse live store locator examples showing maps, filters, and search. Choose a store locator app that fits your website. Explore now.",
+  alternates: { canonical: "/store-locator-examples" },
   openGraph: {
-    title: "Store Locator Examples I MSPL Shopify Store Locator App ",
+    title: "Best Store Locator Examples with Maps",
     description:
-      "View examples of our store locator, which is simple yet powerful. Set up in minutes, works on all platforms, and requires no coding knowledge.",
+      "Browse live store locator examples showing maps, filters, and search. Choose a store locator app that fits your website. Explore now.",
     type: "website",
     url: "/store-locator-examples",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Store Locator Examples I MSPL Shopify Store Locator App ",
+    title: "Best Store Locator Examples with Maps",
     description:
-      "View examples of our store locator, which is simple yet powerful. Set up in minutes, works on all platforms, and requires no coding knowledge.",
+      "Browse live store locator examples showing maps, filters, and search. Choose a store locator app that fits your website. Explore now.",
   },
 };
 

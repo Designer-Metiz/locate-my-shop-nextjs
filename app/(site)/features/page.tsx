@@ -2,11 +2,13 @@ import { Check, MapPin, Upload, Globe, Filter, Palette, Smartphone, Settings, Za
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Best Shopify Store Locator App - Find Stores Easily | Metizsoft",
   description:
     "Enhance customer experience with a Shopify store locator app offering custom maps, bulk uploads, and mobile-friendly design. Helps users quickly find physical store locations.",
+  alternates: { canonical: "/features" },
 };
 
 export default function FeaturesPage() {
@@ -101,7 +103,7 @@ export default function FeaturesPage() {
               <a href="https://apps.shopify.com/store-locator-by-metizsoft?search_id=d4364157-915e-41b0-9b8f-380eabfd7a47&surface_detail=metizsoft&surface_inter_position=1&surface_intra_position=5&surface_type=search">Start Free Trial</a>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="#contact">Contact Sales</a>
+              <Link href="https://www.storelocator.in/contact">Contact Sales</Link>
             </Button>
           </div>
         </div>

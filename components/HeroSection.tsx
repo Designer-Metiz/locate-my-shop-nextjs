@@ -64,7 +64,7 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 pt-4 md:pt-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-accent flex-shrink-0" />
-                <span>1000+ Active Stores</span>
+                <span>3000+ Active Stores</span>
               </div>
               <div className="hidden sm:block h-4 w-px bg-border" />
               <span>⭐ 4.9/5 Rating</span>

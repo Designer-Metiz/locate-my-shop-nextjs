@@ -7,12 +7,12 @@ const Footer = () => {
   const footerLinks = {
     product: [
       { label: "Overview", href: "/" },
-      { label: "Features", href: "/features" },
-      { label: "Pricing", href: "/pricing" },
+      { label: "Features", href: "/#features" },
+      { label: "Pricing", href: "/#pricing" },
       { label: "Store Locator Examples", href: "/store-locator-examples" },
       { label: "Platforms", href: "#" },
       { label: "Use Cases", href: "#" },
-      { label: "Store Locator Software", href: "/store-locator-examples" },
+      { label: "Store Locator Software", href: "#" },
       { label: "Dealer Locator Software", href: "#" },
       { label: "MSPL Store Locator", href: "https://apps.shopify.com/store-locator-by-metizsoft" },
       { label: "Store Locator Widget", href: "#" }
@@ -28,16 +28,15 @@ const Footer = () => {
       { label: "Unlimited Locations", href: "#" }
     ],
     platforms: [
-      { label: "Squarespace Store Locator", href: "#" },
-      { label: "Shopify Store Locator", href: "#" },
-      { label: "Joomla Store Locator", href: "#" },
-      { label: "Wordpress Store Locator", href: "#" },
-      { label: "Elementor Store Locator", href: "#" },
-      { label: "BigCommerce Store Locator", href: "#" },
-      { label: "Webflow Store Locator", href: "#" },
-      { label: "Wix Store Locator", href: "#" },
-      { label: "Weebly Store Locator", href: "#" },
-      { label: "and many, many more...", href: "#" }
+      { label: "Squarespace Store Locator", href: "#platforms" },
+      { label: "Shopify Store Locator", href: "#platforms" },
+      { label: "Joomla Store Locator", href: "#platforms" },
+      { label: "Wordpress Store Locator", href: "#platforms" },
+      { label: "Elementor Store Locator", href: "#platforms" },
+      { label: "BigCommerce Store Locator", href: "#platforms" },
+      { label: "Webflow Store Locator", href: "#platforms" },
+      { label: "Wix Store Locator", href: "#platforms" },
+      { label: "Weebly Store Locator", href: "#platforms" }
     ],
     developers: [
       { label: "Locator Platform", href: "#" },
@@ -46,7 +45,7 @@ const Footer = () => {
     ],
     resources: [
       { label: "Help & Support", href: "https://support.metizsoft.com/portal/en/kb/store-locator-by-metizsoft" },
-      { label: "FAQ", href: "/faq" },
+      { label: "FAQ", href: "/#faq" },
       { label: "Blog", href: "/blog" },
       { label: "Add a store locator to Squarespace", href: "#" },
       { label: "Add a store locator to Shopify", href: "#" },

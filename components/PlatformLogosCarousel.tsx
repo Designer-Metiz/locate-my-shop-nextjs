@@ -8,12 +8,12 @@ const platformLogos = [
   "/assets/plateform-logos/Bigcommerce-Logo.png",
   "/assets/plateform-logos/shopify-Logo.png",
   "/assets/plateform-logos/squarespace-logo.png",
-  "/assets/plateform-logos/Theobroma-logo.png",
-  "/assets/plateform-logos/Vita Sol-logo.png",
   "/assets/plateform-logos/Webflow-logo.png",
   "/assets/plateform-logos/Weebly-logo.png",
   "/assets/plateform-logos/Wordpress-logo-1.png",
   "/assets/plateform-logos/Wordpress-logo.png",
+  // Moved Joomla into platform carousel
+  "/assets/example-company-logos/Joomla-logo.png",
 ];
 
 export default function PlatformLogosCarousel() {
