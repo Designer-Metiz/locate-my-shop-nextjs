@@ -10,12 +10,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Contact Us - Best Store Locator App",
-  alternates: { canonical: "/contact" },
-};
 
 const contactFormSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
