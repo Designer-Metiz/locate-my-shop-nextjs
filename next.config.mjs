@@ -8,6 +8,16 @@ const nextConfig = {
     // Optimize CSS loading for mobile - disabled due to critters dependency issues
     // optimizeCss: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'storelocator.in' }],
+        destination: 'https://www.storelocator.in/:path*',
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: '**' }
