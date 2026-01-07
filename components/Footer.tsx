@@ -1,5 +1,6 @@
 import { MapPin, Mail, Phone, Globe } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,48 +11,48 @@ const Footer = () => {
       { label: "Features", href: "/#features" },
       { label: "Pricing", href: "/#pricing" },
       { label: "Store Locator Examples", href: "/store-locator-examples" },
-      { label: "Platforms", href: "#" },
-      { label: "Use Cases", href: "#" },
-      { label: "Store Locator Software", href: "#" },
-      { label: "Dealer Locator Software", href: "#" },
-      { label: "MSPL Store Locator", href: "https://apps.shopify.com/store-locator-by-metizsoft" },
-      { label: "Store Locator Widget", href: "#" }
+      { label: "Platforms", href: "/#platforms" },
+      // { label: "Use Cases", href: "#" },
+      { label: "Store Locator Software", href: "/#" },
+      { label: "Dealer Locator Software", href: "/#" },
+      { label: "MSPL Store Locator", href: "/#" },
+      { label: "Store Locator Widget", href: "/#" }
     ],
     features: [
-      { label: "Google Maps & MapBox Integration", href: "#" },
-      { label: "Upload Locations using Google Sheets", href: "#" },
-      { label: "Customizable Maps & Icons", href: "#" },
-      { label: "Search Filters & Location Search", href: "#" },
-      { label: "Analytics & Performance Tracking", href: "#" },
-      { label: "Mobile-Responsive Design", href: "#" },
-      { label: "Remove Branding Options", href: "#" },
-      { label: "Unlimited Locations", href: "#" }
+      { label: "Google Maps & MapBox Integration", href: "/#" },
+      { label: "Upload Locations using Google Sheets", href: "/#" },
+      { label: "Customizable Maps & Icons", href: "/#" },
+      { label: "Search Filters & Location Search", href: "/#" },
+      { label: "Analytics & Performance Tracking", href: "/#" },
+      { label: "Mobile-Responsive Design", href: "/#" },
+      { label: "Remove Branding Options", href: "/#" },
+      { label: "Unlimited Locations", href: "/#" }
     ],
     platforms: [
-      { label: "Squarespace Store Locator", href: "#platforms" },
-      { label: "Shopify Store Locator", href: "#platforms" },
-      { label: "Joomla Store Locator", href: "#platforms" },
-      { label: "Wordpress Store Locator", href: "#platforms" },
-      { label: "Elementor Store Locator", href: "#platforms" },
-      { label: "BigCommerce Store Locator", href: "#platforms" },
-      { label: "Webflow Store Locator", href: "#platforms" },
-      { label: "Wix Store Locator", href: "#platforms" },
-      { label: "Weebly Store Locator", href: "#platforms" }
+      { label: "Squarespace Store Locator", href: "/#platforms" },
+      { label: "Shopify Store Locator", href: "/#platforms" },
+      { label: "Joomla Store Locator", href: "/#platforms" },
+      { label: "Wordpress Store Locator", href: "/#platforms" },
+      { label: "Elementor Store Locator", href: "/#platforms" },
+      { label: "BigCommerce Store Locator", href: "/#platforms" },
+      { label: "Webflow Store Locator", href: "/#platforms" },
+      { label: "Wix Store Locator", href: "/#platforms" },
+      { label: "Weebly Store Locator", href: "/#platforms" }
     ],
     developers: [
-      { label: "Locator Platform", href: "#" },
-      { label: "Widget JavaScript API", href: "#" },
-      { label: "Location Management API", href: "#" }
+      // { label: "Locator Platform", href: "#" },1
+      { label: "Widget JavaScript API", href: "/#" },
+      // { label: "Location Management API", href: "#" }
     ],
     resources: [
       { label: "Help & Support", href: "https://support.metizsoft.com/portal/en/kb/store-locator-by-metizsoft" },
       { label: "FAQ", href: "/#faq" },
       { label: "Blog", href: "/blog" },
-      { label: "Add a store locator to Squarespace", href: "#" },
-      { label: "Add a store locator to Shopify", href: "#" },
+      { label: "Add a store locator to Squarespace", href: "/#" },
+      { label: "Add a store locator to Shopify", href: "/#" },
       { label: "Add a store locator to Wordpress", href: "https://support.metizsoft.com/portal/en/kb/store-locator-by-metizsoft/storelocator-for-wordpress", external: true },
-      { label: "Add a store locator to Webflow", href: "#" },
-      { label: "Add a store locator to your website", href: "#" }
+      { label: "Add a store locator to Webflow", href: "/#" },
+      { label: "Add a store locator to your website", href: "/#" }
     ],
     contact: [
       { label: "Email Us", href: "mailto:hello@metizsoft.com" }
@@ -93,12 +94,21 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.product.map((link) => (
                 <li key={link.label}>
-                  <a 
-                    href={link.href} 
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </a>
+                  {link.href.startsWith("http") || link.href.startsWith("mailto:") ? (
+                    <a 
+                      href={link.href} 
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link 
+                      href={link.href as any} 
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -110,12 +120,21 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.features.map((link) => (
                 <li key={link.label}>
-                  <a 
-                    href={link.href} 
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </a>
+                  {link.href.startsWith("http") || link.href.startsWith("mailto:") ? (
+                    <a 
+                      href={link.href} 
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link 
+                      href={link.href as any} 
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -127,12 +146,21 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.platforms.map((link) => (
                 <li key={link.label}>
-                  <a 
-                    href={link.href} 
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </a>
+                  {link.href.startsWith("http") || link.href.startsWith("mailto:") ? (
+                    <a 
+                      href={link.href} 
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link 
+                      href={link.href as any} 
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -144,12 +172,21 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.developers.map((link) => (
                 <li key={link.label}>
-                  <a 
-                    href={link.href} 
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </a>
+                  {link.href.startsWith("http") || link.href.startsWith("mailto:") ? (
+                    <a 
+                      href={link.href} 
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link 
+                      href={link.href as any} 
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -161,24 +198,47 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.resources.slice(0, 2).map((link) => (
                 <li key={link.label}>
-                  <a 
-                    href={link.href} 
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors whitespace-nowrap"
-                  >
-                    {link.label}
-                  </a>
+                  {link.external || link.href.startsWith("http") ? (
+                    <a 
+                      href={link.href} 
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors whitespace-nowrap"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link 
+                      href={link.href as any} 
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors whitespace-nowrap"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
             <div className="flex flex-wrap gap-x-6 gap-y-2">
               {footerLinks.resources.slice(2).map((link) => (
-                <a 
-                  key={link.label}
-                  href={link.href} 
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors whitespace-nowrap"
-                >
-                  {link.label}
-                </a>
+                link.external || link.href.startsWith("http") ? (
+                  <a 
+                    key={link.label}
+                    href={link.href} 
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors whitespace-nowrap"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link 
+                    key={link.label}
+                    href={link.href as any} 
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors whitespace-nowrap"
+                  >
+                    {link.label}
+                  </Link>
+                )
               ))}
             </div>
           </div>

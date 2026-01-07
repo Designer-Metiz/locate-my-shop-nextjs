@@ -141,7 +141,7 @@ const CustomizeSection = () => {
 
         {/* Trust Section */}
         <div className="text-center space-y-12">
-          <p className="text-lg text-muted-foreground font-medium">
+          <p className="text-4xl text-muted-foreground font-bold">
             Loved by thousands of small businesses, global brands and everyone in between.
           </p>
           
