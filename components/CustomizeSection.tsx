@@ -34,6 +34,7 @@ const CustomizeSection = () => {
     { name: "Nuvita", logo: "/assets/example-company-logos/Nuvita-logo.png", type: "image" },
     { name: "Philips", logo: "/assets/example-company-logos/Philips-logo.png", type: "image" },
     { name: "Quality", logo: "/assets/example-company-logos/Quality-logo.png", type: "image" },
+    { name: "being human", logo: "/assets/example-company-logos/being_human_logo.png", type: "image" },
     // Added brand logos moved from platform carousel
     { name: "Theobroma", logo: "/assets/plateform-logos/Theobroma-logo.png", type: "image" },
   ];
