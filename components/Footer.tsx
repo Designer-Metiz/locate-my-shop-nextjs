@@ -48,6 +48,7 @@ const Footer = () => {
       { label: "Help & Support", href: "https://support.metizsoft.com/portal/en/kb/store-locator-by-metizsoft" },
       { label: "FAQ", href: "/#faq" },
       { label: "Blog", href: "/blog" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
       { label: "Add a store locator to Squarespace", href: "/#" },
       { label: "Add a store locator to Shopify", href: "/#" },
       { label: "Add a store locator to Wordpress", href: "https://support.metizsoft.com/portal/en/kb/store-locator-by-metizsoft/storelocator-for-wordpress", external: true },
@@ -196,7 +197,7 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold text-foreground">Resources</h4>
             <ul className="space-y-2">
-              {footerLinks.resources.slice(0, 2).map((link) => (
+              {footerLinks.resources.slice(0, 4).map((link) => (
                 <li key={link.label}>
                   {link.external || link.href.startsWith("http") ? (
                     <a 
@@ -219,7 +220,7 @@ const Footer = () => {
               ))}
             </ul>
             <div className="flex flex-wrap gap-x-6 gap-y-2">
-              {footerLinks.resources.slice(2).map((link) => (
+              {footerLinks.resources.slice(4).map((link) => (
                 link.external || link.href.startsWith("http") ? (
                   <a 
                     key={link.label}
@@ -257,9 +258,9 @@ const Footer = () => {
               <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 About us
               </a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Terms & Privacy
-              </a>
+              <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Privacy Policy
+              </Link>
             </div>
           </div>
         </div>
