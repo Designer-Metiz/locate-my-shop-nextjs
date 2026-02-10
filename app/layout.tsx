@@ -74,12 +74,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Mobile optimization - prevent layout shift */}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
         <meta name="theme-color" content="#1a1a2e" />
-        {/* Google Analytics 4 - required in <head> for Search Console verification via GA */}
+        {/* Google Tag Manager - placed as high in <head> as possible */}
+        <Script id="gtm-init" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-TVF5X55K');
+          `}
+        </Script>
+        {/* Google Analytics 4 - keep GA4 via gtag; can also be managed via GTM if desired */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-NVME1QQG6G"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         />
-        <Script id="ga4-init" strategy="beforeInteractive">
+        <Script id="ga4-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -87,12 +97,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', 'G-NVME1QQG6G');
           `}
         </Script>
-
-
       </head>
       <body>
-        
-        
+        {/* Google Tag Manager (noscript) - immediately after opening <body> */}
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `
+              <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVF5X55K"
+              height="0" width="0" style="display:none;visibility:hidden"></iframe>
+            `,
+          }}
+        />
         <ReactQueryClientProvider>
           <ThemeProvider>
             <TooltipProvider>
